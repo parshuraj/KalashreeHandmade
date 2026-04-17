@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "sku": "KS-2024-01",
+    "title": "The Emerald Cascade",
+    "description": "Artisanally crafted with ethically sourced 24k gold filigree and teardrop Zambian emeralds.",
+    "price": "$4,250",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuB8a5SPebnkYMJGQt0GdTDpCDzTYODvngjbs6Rps4PxMmDK8jgYgeUUeMm-HCAMEMEBaO7t867YgCNZs6rlFWeGrqnNjPIzUJ1Ur9L-36xxNaGnYnfffq2zbAykuoSYgCJ0_fHT1BbAmHcAG7vm-r3_I0pwGnVOL8WmW7s7tegLdT1i-ughpw8JqVtclN8vjqC87Dftz8kZa1pbmIG2kxt5VpxMnX7Xt_IkrV95MCWoL6hDimbq6ch342dfnYdFXmPt2hXP37dOxkqf",
+    "imageAlt": "Luxury gold earring",
+    "imageAltData": "Macro close-up of a 24k gold chandelier earring with intricate filigree work and a single emerald drop against a soft cream silk background"
+  },
+  {
+    "id": 2,
+    "sku": "KS-2024-08",
+    "title": "Surya Heritage Band",
+    "description": "A heavy, hand-beaten gold band featuring solar motifs inspired by ancient temple architecture.",
+    "price": "$2,800",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKETWDSebMYtKs7zDoktGaeS36O6KpQr59slbeWcY9sDhzAW0cypWfx-pYZw1lfTYqhMEpoxBJB47E4OCZGRF_G2wsKlImkxtRsQHhlBOtb3er5DqyezI9dbk_ylYF0APTlJIx0BJYyD8nA49sDqKKW-HzTDOflPtHT7YaA36y1o8RBoNopCy-RhyZTv3D4y-CGys5hGff9odjCvRMt08Lha1cMmVdxe7GxIlW5dsCsPzos0mUsfBqcUU2AyGinKGui83xBISrDAG6",
+    "imageAlt": "Gold bangles",
+    "imageAltData": "Stack of hand-engraved solid gold bangles lying on a dark textured wood surface with dramatic sunlight hitting the metal edges"
+  },
+  {
+    "id": 3,
+    "sku": "KS-2024-15",
+    "title": "Lunar Solitude",
+    "description": "A single rose-cut diamond suspended by a whisper-thin platinum chain.",
+    "price": "$1,150",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBdJ1S1MCYVokc0OVnRCgXELwGNEPCHnEB-SDGL6fJ2uEmDG5fXRVBEOKBnTvTHB9obXFIexZlW3hdxZERdLfwcaF1k6gvAr61YcM7dsYanKh-BWfb99WeRNKGJyJbKapb8yk16IudKyN9WACVL-3yAS1sDsxUq_M0z7I16DY9B2RoUHpyUtHgEwlfVL9rVUVVky5QFr_vCKj1lOcvQ6xmUDmemQg2F8siLdV_G4JBSD4dSR_3-HSWKxuMcF0aFb0RmC1UVkjiRk4i_",
+    "imageAlt": "Diamond necklace",
+    "imageAltData": "Minimalist diamond pendant necklace draped over a white marble bust, soft morning light creating gentle shadows"
+  },
+  {
+    "id": 4,
+    "sku": "KS-2024-22",
+    "title": "Vermillion Bloom",
+    "description": "Floral-inspired ring with ruby petals and a yellow sapphire core.",
+    "price": "$3,400",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDEkIm5bJhDsKVKIW6qZF7y8zqRXkcDeTUMJ0arPSy6_VLd_uiArSsNVKEU9U__1KK2-goh8HXh4SQ0BdsfRdD5P5Efdea-clk01_BdYw2kuCy4xntW8AuqHLicrNOrcMo6GmBTKQKNMe7AB09IEvKKuNYJxZqX10-TKLmfDnwkivKV5Njkz42jddt1x73F2eRmPwzJ1QZavJME7MhMz61lFvlziw5Vg1k15OYksV_EG7B4_zWZDInRJ1MOptv9ly2dmzw1AbEU92s1",
+    "imageAlt": "Ruby ring",
+    "imageAltData": "High-fashion macro photo of a ruby cocktail ring on a dark velvet cushion, glowing crimson stones surrounded by gold petals"
+  },
+  {
+    "id": 5,
+    "sku": "KS-2024-05",
+    "title": "Geometric Heritage",
+    "description": "Where modern lines meet traditional goldsmithing techniques.",
+    "price": "$1,850",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCHWklMRoaCMU53QagCLLTwrszna84e2kci-OBRpPCEDyNff6M5Mkm_4HRSrtoaGz-xw8xxrwDmFl9SVEvJfTHPBD0LX-w2SF7YtVEHoRUXak6zkOVs5N0vWHGjtJ0xAlx5Qq54fh8zgh9kdjvJy9nFy5mcs6eczUUqIl5YijA7807A8GndzVr0q4_bwK8FnCrdiv0CmYdk9d4z1OgaqX3PNl4x-pLmhnKfjjN27bwXm49YAoIyksxIe1stCujdlYK2WqZFuyLGQy76",
+    "imageAlt": "Earrings",
+    "imageAltData": "Modern geometric gold earrings displayed against a neutral linen background with organic shadows of palm leaves"
+  },
+  {
+    "id": 6,
+    "sku": "KS-2024-06",
+    "title": "Geometric Heritage",
+    "description": "Where modern lines meet traditional goldsmithing techniques.",
+    "price": "$1,850",
+    "image": [
+      "images/IMG_5325.JPG",
+      "images/IMG_7839.JPG",
+      "images/IMG_7842.JPG"
+    ],
+    "imageAlt": "Earrings",
+    "imageAltData": "Modern geometric gold earrings displayed against a neutral linen background with organic shadows of palm leaves"
+  }
+]

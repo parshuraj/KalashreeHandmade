@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@300;400;600&amp;family=Space+Grotesk:wght@300;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary-fixed-dim": "#e9c349",
+                "surface-container": "#eeeeed",
+                "surface-container-highest": "#e3e2e1",
+                "tertiary-fixed": "#ffdead",
+                "error-container": "#ffdad6",
+                "surface-dim": "#dadad9",
+                "on-secondary": "#ffffff",
+                "on-error-container": "#93000a",
+                "surface-tint": "#2b6954",
+                "error": "#ba1a1a",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#e9e8e7",
+                "secondary": "#735c00",
+                "on-secondary-fixed-variant": "#574500",
+                "on-surface-variant": "#404944",
+                "on-primary-fixed": "#002117",
+                "inverse-primary": "#95d3ba",
+                "on-secondary-container": "#745c00",
+                "primary-fixed": "#b0f0d6",
+                "on-error": "#ffffff",
+                "surface": "#faf9f8",
+                "inverse-surface": "#2f3130",
+                "surface-container-lowest": "#ffffff",
+                "surface-variant": "#e3e2e1",
+                "primary": "#003527",
+                "on-tertiary-fixed-variant": "#5e4108",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed": "#281900",
+                "background": "#faf9f8",
+                "on-surface": "#1a1c1c",
+                "primary-fixed-dim": "#95d3ba",
+                "on-background": "#1a1c1c",
+                "outline": "#707974",
+                "secondary-container": "#fed65b",
+                "outline-variant": "#bfc9c3",
+                "tertiary": "#402a00",
+                "primary-container": "#064e3b",
+                "inverse-on-surface": "#f1f0f0",
+                "surface-bright": "#faf9f8",
+                "on-primary-container": "#80bea6",
+                "on-tertiary-container": "#d5ab6a",
+                "tertiary-fixed-dim": "#ebc07c",
+                "surface-container-low": "#f4f3f2",
+                "tertiary-container": "#5c3f06",
+                "on-primary-fixed-variant": "#0b513d",
+                "secondary-fixed": "#ffe088",
+                "on-secondary-fixed": "#241a00"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Manrope"],
+                "label": ["Space Grotesk"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+          display: inline-block;
+          line-height: 1;
+        }
+        .masonry-grid {
+          display: grid;
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+          gap: 2rem;
+        }
+        @media (min-width: 768px) { .masonry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { .masonry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (min-width: 1280px) { .masonry-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+        .masonry-item {
+          display: flex;
+          flex-direction: column;
+        }
+      </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-emerald-950/80 backdrop-blur-xl dark:bg-emerald-950/90 shadow-xl shadow-emerald-950/20">
+<nav class="flex justify-between items-center px-8 h-20 max-w-full">
+<div class="text-2xl font-headline font-bold text-amber-500 dark:text-amber-400">Kalashree</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline tracking-tight text-amber-500 border-b-2 border-amber-500 pb-1" href="#">Earrings</a>
+<a class="font-headline tracking-tight text-stone-300 hover:text-white transition-colors" href="#">Necklaces</a>
+<a class="font-headline tracking-tight text-stone-300 hover:text-white transition-colors" href="#">Bangles</a>
+<a class="font-headline tracking-tight text-stone-300 hover:text-white transition-colors" href="#">Custom Sets</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm">search</span>
+<input class="bg-white/10 border-none rounded-full py-2 pl-10 pr-4 text-white text-sm focus:ring-1 focus:ring-amber-500/50 w-48 transition-all" placeholder="Search heritage..." type="text"/>
+</div>
+<button class="text-stone-300 hover:bg-white/5 transition-all duration-300 p-2 scale-95 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="text-stone-300 hover:bg-white/5 transition-all duration-300 p-2 scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</nav>
+</header>
+<div class="pt-20 flex min-h-screen">
+<!-- SideNavBar / Filter -->
+<aside class="hidden md:flex h-[calc(100vh-5rem)] w-72 flex-col py-12 px-8 gap-10 sticky top-20 bg-surface-container-low overflow-y-auto">
+<div>
+<h3 class="font-headline text-lg text-primary mb-1">Collections</h3>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Modern Heritage</p>
+</div>
+<div class="space-y-6">
+<div>
+<h4 class="font-label text-xs font-medium uppercase tracking-wider text-on-surface-variant mb-4">Categories</h4>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded-sm border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm font-body text-primary font-bold transition-colors">Earrings</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm font-body text-on-surface-variant group-hover:text-amber-600 transition-colors">Necklaces</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm font-body text-on-surface-variant group-hover:text-amber-600 transition-colors">Bangles</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm font-body text-on-surface-variant group-hover:text-amber-600 transition-colors">Custom Sets</span>
+</label>
+</div>
+</div>
+<div>
+<h4 class="font-label text-xs font-medium uppercase tracking-wider text-on-surface-variant mb-4">Price Range</h4>
+<div class="px-2">
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" type="range"/>
+<div class="flex justify-between mt-2 font-label text-[10px] text-outline">
+<span>$500</span>
+<span>$15,000+</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-label text-xs font-medium uppercase tracking-wider text-on-surface-variant mb-4">Sort By</h4>
+<select class="w-full bg-transparent border-b border-outline-variant py-2 text-sm focus:border-secondary focus:ring-0 outline-none">
+<option>New Arrivals</option>
+<option>Price: High to Low</option>
+<option>Price: Low to High</option>
+<option>Curated Popularity</option>
+</select>
+</div>
+</div>
+<div class="mt-auto space-y-4 pt-10">
+<button class="flex items-center gap-3 text-on-surface-variant hover:text-amber-600 transition-colors group">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span class="font-label text-xs uppercase tracking-widest">Contact Artisan</span>
+</button>
+<button class="flex items-center gap-3 text-on-surface-variant hover:text-amber-600 transition-colors group">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+<span class="font-label text-xs uppercase tracking-widest">Provenance</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 px-8 lg:px-16 py-12">
+<!-- Breadcrumbs / Meta -->
+<div class="flex justify-between items-baseline mb-16">
+<div>
+<h1 class="font-headline text-4xl lg:text-5xl text-primary mb-2">Exquisite Adornments</h1>
+<p class="text-on-surface-variant font-body">Showing 24 hand-crafted pieces</p>
+</div>
+<div class="hidden lg:block text-right">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-outline">Collection / 2024</span>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="masonry-grid" id="product-grid">
+<!-- Products will be dynamically loaded here by JavaScript -->
+</div>
+<!-- Pagination -->
+<div class="mt-24 py-12 flex flex-col items-center gap-6">
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-label text-sm bg-primary-container text-on-primary-container">1</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-label text-sm text-on-surface-variant hover:bg-surface-container transition-colors">2</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-label text-sm text-on-surface-variant hover:bg-surface-container transition-colors">3</button>
+<span class="mx-2 text-outline">...</span>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-label text-sm text-on-surface-variant hover:bg-surface-container transition-colors">12</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Page 1 of 12</p>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-emerald-950 dark:bg-black w-full pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-start">
+<div class="space-y-6">
+<div class="text-3xl font-headline font-bold text-amber-500">Kalashree</div>
+<p class="font-body text-stone-400 text-sm leading-relaxed max-w-xs">Preserving the soul of craftsmanship through digital windows. Every piece tells a story spanning generations.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label text-[10px] uppercase tracking-[0.25em] text-white/40 mb-2">The Atelier</h5>
+<a class="font-label text-xs uppercase tracking-widest text-stone-400 hover:text-amber-500 transition-colors" href="#">The Heritage</a>
+<a class="font-label text-xs uppercase tracking-widest text-stone-400 hover:text-amber-500 transition-colors" href="#">Privacy Policy</a>
+<a class="font-label text-xs uppercase tracking-widest text-stone-400 hover:text-amber-500 transition-colors" href="#">Shipping &amp; Returns</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label text-[10px] uppercase tracking-[0.25em] text-white/40 mb-2">Follow the Journey</h5>
+<div class="flex gap-6">
+<a class="text-amber-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">stylus</span></a>
+<a class="text-amber-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">camera</span></a>
+<a class="text-amber-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">history</span></a>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-stone-500">© 2024 Kalashree Artisans. All rights reserved.</p>
+<div class="flex gap-8">
+<span class="font-label text-[10px] text-stone-600">HANDCRAFTED IN BHARAT</span>
+<span class="font-label text-[10px] text-stone-600">SHIPS WORLDWIDE</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Modal -->
+<div id="product-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity p-4">
+  <div class="bg-surface-container-lowest rounded-xl max-w-4xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+    <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors">
+      <span class="material-symbols-outlined text-sm">close</span>
+    </button>
+    <div class="md:w-1/2 bg-surface-container-lowest flex-shrink-0 flex flex-col">
+      <div class="relative w-full aspect-square">
+        <img id="modal-img" src="" alt="" class="absolute inset-0 w-full h-full object-contain bg-surface-container-low">
+        <button id="modal-prev-btn" onclick="prevModalImage()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center hidden z-10 transition-colors">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button id="modal-next-btn" onclick="nextModalImage()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center hidden z-10 transition-colors">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+      <div id="modal-thumbnails" class="flex gap-2 p-4 overflow-x-auto bg-surface-container-low hidden"></div>
+    </div>
+    <div class="md:w-1/2 p-8 flex flex-col overflow-y-auto">
+      <span id="modal-sku" class="font-label text-[10px] text-outline mb-2 block tracking-widest"></span>
+      <h2 id="modal-title" class="font-headline text-3xl text-primary mb-4"></h2>
+      <p id="modal-desc" class="text-on-surface-variant font-body leading-relaxed mb-8"></p>
+      <div class="mt-auto pt-8">
+        <span id="modal-price" class="font-headline text-2xl text-primary block mb-6"></span>
+        <a id="modal-order-btn" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-700 hover:bg-emerald-800 text-white font-label tracking-widest uppercase text-sm py-4 px-6 rounded-lg transition-colors">
+          <span class="material-symbols-outlined">send</span>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let productsData = {};
+  let currentModalImages = [];
+  let currentModalImageIndex = 0;
+
+  function updateModalImage(index) {
+    if (index < 0) index = currentModalImages.length - 1;
+    if (index >= currentModalImages.length) index = 0;
+    currentModalImageIndex = index;
+    
+    document.getElementById('modal-img').src = currentModalImages[index];
+    
+    const thumbContainer = document.getElementById('modal-thumbnails');
+    Array.from(thumbContainer.children).forEach((c, i) => {
+      if (i === index) {
+        c.classList.remove('border-transparent', 'hover:border-primary/50');
+        c.classList.add('border-primary');
+        c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        c.classList.remove('border-primary');
+        c.classList.add('border-transparent', 'hover:border-primary/50');
+      }
+    });
+  }
+
+  function nextModalImage() {
+    if (currentModalImages.length <= 1) return;
+    updateModalImage(currentModalImageIndex + 1);
+  }
+
+  function prevModalImage() {
+    if (currentModalImages.length <= 1) return;
+    updateModalImage(currentModalImageIndex - 1);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('product-modal');
+    if (!modal.classList.contains('hidden')) {
+      if (e.key === 'ArrowRight') nextModalImage();
+      if (e.key === 'ArrowLeft') prevModalImage();
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+
+  function openModal(sku) {
+    const product = productsData[sku];
+    if (!product) return;
+
+    let images = [];
+    if (Array.isArray(product.images) && product.images.length > 0) {
+      images = product.images;
+    } else if (Array.isArray(product.image) && product.image.length > 0) {
+      images = product.image;
+    } else {
+      images = [product.image];
+    }
+    
+    currentModalImages = images;
+    currentModalImageIndex = 0;
+    
+    const thumbContainer = document.getElementById('modal-thumbnails');
+    const prevBtn = document.getElementById('modal-prev-btn');
+    const nextBtn = document.getElementById('modal-next-btn');
+    
+    document.getElementById('modal-img').src = images[0];
+    document.getElementById('modal-img').alt = product.imageAlt || '';
+
+    thumbContainer.innerHTML = '';
+    if (images.length > 1) {
+      thumbContainer.classList.remove('hidden');
+      prevBtn.classList.remove('hidden');
+      nextBtn.classList.remove('hidden');
+      images.forEach((imgUrl, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = imgUrl;
+        thumb.className = 'w-20 h-20 object-cover rounded cursor-pointer border-2 transition-colors flex-shrink-0 ' + (index === 0 ? 'border-primary' : 'border-transparent hover:border-primary/50');
+        
+        thumb.onclick = () => updateModalImage(index);
+        thumbContainer.appendChild(thumb);
+      });
+    } else {
+      thumbContainer.classList.add('hidden');
+      prevBtn.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+    }
+    document.getElementById('modal-sku').textContent = 'SKU #' + product.sku;
+    document.getElementById('modal-title').textContent = product.title;
+    document.getElementById('modal-desc').textContent = product.description;
+    document.getElementById('modal-price').textContent = product.price;
+
+    const message = `Hello, I am interested in ordering:\n\nProduct: ${product.title}\nSKU: ${product.sku}\nPrice: ${product.price}`;
+    const whatsappUrl = `https://wa.me/918237208617?text=${encodeURIComponent(message)}`;
+    document.getElementById('modal-order-btn').href = whatsappUrl;
+
+    document.getElementById('product-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeModal() {
+    document.getElementById('product-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal when clicking outside
+  document.getElementById('product-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('products.json?t=' + new Date().getTime())
+      .then(response => response.json())
+      .then(products => {
+        const grid = document.getElementById('product-grid');
+        grid.innerHTML = '';
+        products.forEach(product => {
+          productsData[product.sku] = product;
+          let coverImage = product.image;
+          if (Array.isArray(product.images) && product.images.length > 0) {
+            coverImage = product.images[0];
+          } else if (Array.isArray(product.image) && product.image.length > 0) {
+            coverImage = product.image[0];
+          }
+          const cardHtml = `
+            <div class="masonry-item group cursor-pointer" onclick="openModal('${product.sku}')">
+              <div class="bg-surface-container-lowest overflow-hidden transition-all duration-500 mb-6 relative">
+                <img alt="${product.imageAlt}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 aspect-square" data-alt="${product.imageAltData}" src="${coverImage}">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
+              </div>
+              <div class="px-2">
+                <span class="font-label text-[10px] text-outline mb-2 block tracking-widest">SKU #${product.sku}</span>
+                <h2 class="font-headline text-xl text-primary mb-2 group-hover:text-secondary transition-colors">${product.title}</h2>
+                <p class="text-sm text-on-surface-variant line-clamp-2 mb-6 font-body leading-relaxed">${product.description}</p>
+                <div class="flex justify-between items-center">
+                  <span class="font-headline text-lg text-primary">${product.price}</span>
+                  <button class="font-label text-xs uppercase tracking-widest text-secondary border-b border-transparent hover:border-secondary transition-all">View Details</button>
+                </div>
+              </div>
+            </div>
+          `;
+          grid.insertAdjacentHTML('beforeend', cardHtml);
+        });
+      })
+      .catch(error => console.error('Error loading products:', error));
+  });
+</script>
+</body></html>
