@@ -7,31 +7,31 @@
   {
     "id": "necklaces",
     "name": "Necklaces",
-    "defaultChecked": false
+    "defaultChecked": true
   },
   {
     "id": "bangles",
     "name": "Bangles",
-    "defaultChecked": false
+    "defaultChecked": true
   },
   {
     "id": "bracelets",
     "name": "Bracelets",
-    "defaultChecked": false
+    "defaultChecked": true
   },
   {
     "id": "rings",
     "name": "Rings",
-    "defaultChecked": false
+    "defaultChecked": true
   },
   {
     "id": "pendants",
     "name": "Pendants",
-    "defaultChecked": false
+    "defaultChecked": true
   },
   {
     "id": "custom-sets",
     "name": "Custom Sets",
-    "defaultChecked": false
+    "defaultChecked": true
   }
 ]

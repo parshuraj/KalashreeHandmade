@@ -98,7 +98,7 @@
 <button id="mobile-menu-btn" class="md:hidden text-stone-300 hover:text-white transition-colors p-1 flex items-center">
 <span class="material-symbols-outlined text-[28px]">menu</span>
 </button>
-<div class="text-2xl font-headline font-bold text-amber-500 dark:text-amber-400">Kalashree</div>
+<img src="logo.png?v=3" alt="Kalashree Logo" class="h-20 w-auto object-contain transform scale-150 origin-left">
 </div>
 <div id="top-nav-links" class="hidden md:flex items-center gap-8">
 <!-- Dynamically populated by JS -->
@@ -179,10 +179,10 @@
 <div class="flex justify-between items-baseline mb-16">
 <div>
 <h1 class="font-headline text-4xl lg:text-5xl text-primary mb-2">Exquisite Adornments</h1>
-<p class="text-on-surface-variant font-body">Showing 24 hand-crafted pieces</p>
+<p id="product-count" class="text-on-surface-variant font-body">Showing 24 hand-crafted pieces</p>
 </div>
 <div class="hidden lg:block text-right">
-<span class="font-label text-xs uppercase tracking-[0.2em] text-outline">Collection / 2024</span>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-outline">Collection / 2026</span>
 </div>
 </div>
 <!-- Product Grid -->
@@ -235,7 +235,7 @@
 </div>
 </div>
 <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-label text-[10px] uppercase tracking-[0.2em] text-stone-500">© 2024 Kalashree Artisans. All rights reserved.</p>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-stone-500">© 2026 Kalashree Handmade. All rights reserved.</p>
 <div class="flex gap-8">
 <span class="font-label text-[10px] text-stone-600">HANDCRAFTED IN BHARAT</span>
 <span class="font-label text-[10px] text-stone-600">SHIPS WORLDWIDE</span>
@@ -285,7 +285,7 @@
     <div class="text-center mb-8">
       <span class="material-symbols-outlined text-4xl text-amber-500 mb-4">history_edu</span>
       <h2 class="font-headline text-3xl text-primary mb-2">Our Provenance</h2>
-      <p class="font-label text-[10px] uppercase tracking-widest text-outline">The Legacy of Kalashree Artisans</p>
+      <p class="font-label text-[10px] uppercase tracking-widest text-outline">The Legacy of Kalashree Handmade</p>
     </div>
     <div class="space-y-6 text-on-surface-variant font-body leading-relaxed text-sm">
       <p>Every piece at Kalashree Handmade is a testament to centuries of goldsmithing traditions passed down through generations. Our artisans hail from historic craft communities where the techniques of filigree, granulation, and stone-setting are treated as sacred arts.</p>
@@ -298,13 +298,33 @@
 <script>
   let productsData = {};
   let allProducts = [];
+  let currentFilteredProducts = [];
+  let currentPage = 1;
+  const ITEMS_PER_PAGE = 12;
   let currentModalImages = [];
   let currentModalImageIndex = 0;
 
   function renderProducts(products) {
+    currentFilteredProducts = products;
+    currentPage = 1;
+    renderPage(currentPage);
+  }
+
+  function renderPage(page) {
+    currentPage = page;
     const grid = document.getElementById('product-grid');
     grid.innerHTML = '';
-    products.forEach(product => {
+    
+    const countEl = document.getElementById('product-count');
+    if (countEl) {
+      countEl.textContent = `Showing ${currentFilteredProducts.length} hand-crafted pieces`;
+    }
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const pageProducts = currentFilteredProducts.slice(startIndex, endIndex);
+
+    pageProducts.forEach(product => {
       let coverImage = product.image;
       if (Array.isArray(product.images) && product.images.length > 0) {
         coverImage = product.images[0];
@@ -331,11 +351,63 @@
       grid.insertAdjacentHTML('beforeend', cardHtml);
     });
 
+    updatePagination();
+  }
+
+  function updatePagination() {
+    const totalPages = Math.ceil(currentFilteredProducts.length / ITEMS_PER_PAGE);
     const pagination = document.getElementById('pagination');
-    if (pagination) {
-      pagination.style.display = products.length > 12 ? 'flex' : 'none';
+    
+    if (!pagination) return;
+    
+    if (totalPages <= 1) {
+      pagination.style.display = 'none';
+      return;
+    }
+    
+    pagination.style.display = 'flex';
+    
+    let buttonsHtml = '';
+    
+    buttonsHtml += `
+      <button onclick="goToPage(${currentPage - 1})" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentPage === 1 ? 'disabled' : ''}>
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+    `;
+    
+    for (let i = 1; i <= totalPages; i++) {
+       const activeClass = i === currentPage 
+         ? 'bg-primary-container text-on-primary-container' 
+         : 'text-on-surface-variant hover:bg-surface-container transition-colors';
+         
+       buttonsHtml += `
+         <button onclick="goToPage(${i})" class="w-10 h-10 rounded-full flex items-center justify-center font-label text-sm ${activeClass}">${i}</button>
+       `;
+    }
+    
+    buttonsHtml += `
+      <button onclick="goToPage(${currentPage + 1})" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}" ${currentPage === totalPages ? 'disabled' : ''}>
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+    `;
+
+    pagination.innerHTML = `
+      <div class="flex items-center gap-1">
+        ${buttonsHtml}
+      </div>
+      <p class="font-label text-[10px] uppercase tracking-widest text-outline">Page ${currentPage} of ${totalPages}</p>
+    `;
+  }
+
+  function goToPage(page) {
+    const totalPages = Math.ceil(currentFilteredProducts.length / ITEMS_PER_PAGE);
+    if (page >= 1 && page <= totalPages) {
+      renderPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
+
+  window.goToPage = goToPage;
 
   function parsePrice(priceStr) {
     if (!priceStr) return 0;
@@ -347,14 +419,6 @@
     if (checkboxes.length === 0 || allProducts.length === 0) return;
     
     const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
-    if (checkedCheckboxes.length === 0) {
-      renderProducts([]);
-      return;
-    }
-
-    const priceInput = document.getElementById('price-range');
-    const maxPrice = priceInput ? parseInt(priceInput.value) : Infinity;
-
     const checkedCategories = checkedCheckboxes.map(cb => cb.dataset.name);
 
     const topNavLinks = document.getElementById('top-nav-links');
@@ -367,6 +431,14 @@
         }
       });
     }
+
+    if (checkedCheckboxes.length === 0) {
+      renderProducts([]);
+      return;
+    }
+
+    const priceInput = document.getElementById('price-range');
+    const maxPrice = priceInput ? parseInt(priceInput.value) : Infinity;
 
     let filtered = allProducts.filter(p => {
       const categoryMatch = checkedCategories.includes(p.category);
@@ -519,10 +591,13 @@
       .then(response => response.json())
       .then(categories => {
         const categoryList = document.getElementById('category-filter-list');
+        const allChecked = categories.every(c => c.defaultChecked);
+        const allCheckedAttr = allChecked ? 'checked' : '';
+        const allTextStyle = allChecked ? 'text-primary font-bold' : 'text-on-surface-variant group-hover:text-amber-600';
         categoryList.innerHTML = `
             <label class="flex items-center gap-3 cursor-pointer group mb-1">
-              <input type="checkbox" id="check-all-categories" class="rounded-sm border-outline-variant text-secondary focus:ring-secondary">
-              <span class="text-sm font-body transition-colors text-on-surface-variant group-hover:text-amber-600">All</span>
+              <input type="checkbox" id="check-all-categories" class="rounded-sm border-outline-variant text-secondary focus:ring-secondary" ${allCheckedAttr}>
+              <span class="text-sm font-body transition-colors ${allTextStyle}">All</span>
             </label>
         `;
         categories.forEach(category => {
