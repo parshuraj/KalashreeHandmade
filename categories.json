@@ -1,0 +1,37 @@
+[
+  {
+    "id": "earrings",
+    "name": "Earrings",
+    "defaultChecked": true
+  },
+  {
+    "id": "necklaces",
+    "name": "Necklaces",
+    "defaultChecked": false
+  },
+  {
+    "id": "bangles",
+    "name": "Bangles",
+    "defaultChecked": false
+  },
+  {
+    "id": "bracelets",
+    "name": "Bracelets",
+    "defaultChecked": false
+  },
+  {
+    "id": "rings",
+    "name": "Rings",
+    "defaultChecked": false
+  },
+  {
+    "id": "pendants",
+    "name": "Pendants",
+    "defaultChecked": false
+  },
+  {
+    "id": "custom-sets",
+    "name": "Custom Sets",
+    "defaultChecked": false
+  }
+]
